@@ -5,7 +5,7 @@ let personajes = [
     descripcion: "Protagonista de la película",
     habilidades: ["Espada", "Energía maldita"],
     nombrePersonaje: "Yuta Okkotsu",
-    url_imagen: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTK0G-MJzKb_wV_7NVwc7cmwpZi5KhuRp3eEw&s",
+    url_imagen: "img/yuta.jpg",
     edad: 17,
     altura: 175,
     esVillano: false
@@ -16,7 +16,7 @@ let personajes = [
     descripcion: "Principal antagonista",
     habilidades: ["Maldiciones", "Manipulación"],
     nombrePersonaje: "Suguru Geto",
-    url_imagen: "https://pngdownload.io/wp-content/uploads/2024/01/Suguru-Geto-Jujutsu-Kaisen-anime-transparent-PNG-image-jpg.webp",
+    url_imagen: "img/Suguru-Geto.jpg",
     edad: 27,
     altura: 185,
     esVillano: true
@@ -33,7 +33,7 @@ function mostrarPersonajes(){
     personajes.forEach((personaje, index) => {
 
         contenedor.innerHTML += `
-        
+
         <div class="tarjeta">
 
             <img src="${personaje.url_imagen}">
@@ -42,24 +42,26 @@ function mostrarPersonajes(){
 
             <p>${personaje.descripcion}</p>
 
-            <p>Edad: ${personaje.edad}</p>
+            <p><strong>Edad:</strong> ${personaje.edad}</p>
 
-            <p>Altura: ${personaje.altura}</p>
+            <p><strong>Altura:</strong> ${personaje.altura} cm</p>
 
-            <p>Villano: ${personaje.esVillano}</p>
+            <p><strong>Villano:</strong> ${personaje.esVillano ? "Sí" : "No"}</p>
 
-            <p>Habilidades: ${personaje.habilidades}</p>
+            <p><strong>Habilidades:</strong> ${personaje.habilidades.join(", ")}</p>
 
             <button onclick="eliminar(${index})">
                 Eliminar
             </button>
+
             <button onclick="actualizar(${index})">
-    Actualizar
-</button>
+                Actualizar
+            </button>
 
         </div>
 
         `;
+
     });
 
 }
@@ -95,6 +97,8 @@ document.getElementById("formulario")
 
     mostrarPersonajes();
 
+    document.getElementById("formulario").reset();
+
 });
 
 function eliminar(index){
@@ -103,17 +107,23 @@ function eliminar(index){
 
     mostrarPersonajes();
 
-    
-}
-  function actualizar(index){
-
-    let nuevoNombre = prompt("Ingrese el nuevo nombre");
-
-    personajes[index].nombrePersonaje = nuevoNombre;
-
-    mostrarPersonajes();
 }
 
+function actualizar(index){
+
+    let nuevoNombre = prompt(
+        "Ingrese el nuevo nombre del personaje"
+    );
+
+    if(nuevoNombre){
+
+        personajes[index].nombrePersonaje = nuevoNombre;
+
+        mostrarPersonajes();
+
+    }
+
+}
 
 function ordenarNombre(){
 
@@ -122,6 +132,7 @@ function ordenarNombre(){
     );
 
     mostrarPersonajes();
+
 }
 
 function ordenarEdad(){
@@ -129,4 +140,5 @@ function ordenarEdad(){
     personajes.sort((a,b)=> a.edad - b.edad);
 
     mostrarPersonajes();
+
 }
