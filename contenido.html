@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Personajes</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <h1>Lista de Personajes</h1>
+
+    <nav>
+        <a href="index.html">Inicio</a>
+        <a href="contenido.html">Personajes</a>
+        <a href="noticias.html">Noticias</a>
+    </nav>
+
+    <h2>Agregar personaje</h2>
+
+    <form id="formulario">
+
+        <input type="text" id="nombre" placeholder="Nombre">
+        <input type="number" id="edad" placeholder="Edad">
+        <input type="number" id="altura" placeholder="Altura">
+
+        <input type="text" id="descripcion" placeholder="Descripción">
+
+        <input type="text" id="habilidades" placeholder="Habilidades separadas por coma">
+
+        <input type="text" id="imagen" placeholder="URL Imagen">
+
+        <label>
+            ¿Es villano?
+            <input type="checkbox" id="villano">
+        </label>
+
+        <button type="submit">Agregar</button>
+
+    </form>
+
+    <br>
+
+    <button onclick="ordenarNombre()">Ordenar por nombre</button>
+    <button onclick="ordenarEdad()">Ordenar por edad</button>
+
+    <div id="contenedor"></div>
+
+    <script src="app.js"></script>
+
+</body>
+</html>
